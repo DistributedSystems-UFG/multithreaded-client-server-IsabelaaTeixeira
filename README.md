@@ -7,4 +7,57 @@ Este template corresponde ao exemplo da Fig. 2.3 do livro. O exercício consiste
 
 Tarefa individual.
 
-Incluir um Readme descritivo do sistema implementado.
+## PASSO A PASSO 
+
+O primeiro passo dessa atividade foi acessar e configurar as instâncias no AWS Academy. Seguindo o passo a passo da aula e do vídeo disponibilizado pelo professor na plataforma turing, lancei 6 instâncias peer (na região N. Virginia), 1 instância server (também na região N. Virginia) e outras 2 instâncias peer (na região Oregon). Além disso, estabelecemos um Elastic IP para o server.
+
+![[Pasted image 20260323200001.png]]
+
+
+### Acessando as instâncias
+
+Após isso, o objetivo foi acessar essas instâncias para testar a comunicação entre elas, para isso abrimos dois terminais locais para acessar as máquinas virtuais criadas na AWS Academy, utilizando o usuário correto para a imagem do sistema (`ec2-user`):
+
+- **Terminal 1 (Server):**
+```
+ssh -i 2026-1-east.pem ec2-user@52.3.203.46
+```
+ ![[Pasted image 20260323200634.png]]
+
+
+- **Terminal 2 (Client / `peer1`):**
+```    
+ssh -i 2026-1-east.pem ec2-user@100.54.202.135
+```
+![[Pasted image 20260323200658.png]]
+```No caso do client, esse IP varia a cada vez que o AWS é aberto.```
+
+
+### Git
+
+Após os terminais serem acessados, realizei o git clone do repositório do github em cada uma das máquinas, com o comando:
+```    
+git clone https://github.com/DistributedSystems-UFG/basic-client-server-with-sockets-IsabelaaTeixeira.git
+```
+
+Com o repositório clonado, foi preciso ajustar o ip do HOST, que é o "Private IPv4 addresses" mostrado na imagem. 
+
+![[Pasted image 20260323201031.png]]
+
+Assim, acessei o arquivo constCS.py nos dois terminais e alterei o conteúdo para o valor correto do host, fazendo um ```nano constCS.py``` e assim ficando:
+
+```    
+HOST = '172.31.23.228'
+PORT = 5678
+```
+
+### Verificando a comunicação
+
+Para verificar se as máquinas estão conseguindo se comunicar, primeiro realizamos um ```python3 server.py``` (para isso é necessário estar no diretório que contém o arquivo server.py) na máquina server. Inicialmente a máquina vai ficar carregando e esperando a confirmação do outro lado:
+![[Pasted image 20260323202107.png]]
+
+Com isso, realiza-se um ```python3 client.py``` (para isso é necessário estar no diretório que contém o arquivo client.py) na máquina client. Ao fazer isso, o cliente envia um ```Hello, world``` para o servidor. Após isso conseguimos ver a mensagem sendo enviada e chegando do outro lado:
+![[Pasted image 20260323202657.png]]
+![[Pasted image 20260323202715.png]]
+
+
