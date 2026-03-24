@@ -61,3 +61,13 @@ Com isso, realiza-se um ```python3 client.py``` (para isso é necessário estar 
 ![[Pasted image 20260323202715.png]]
 
 
+## Aplicando as alterações pedidas
+
+Com base no exemplo fornecido em aula (slide 5), faça o seguinte:
+- acrescente complexidade no processamento da requisição no servidor;
+- permita que o cliente chame mais de uma funcionalidade diferente no servidor a cada requisição.
+
+A minha ideia foi transformar o servidor em um **Mini Kit de Forense Digital e Segurança**, de forma que teremos 3 funcionalidades: 
+- **`analise_entropia`**: Calcula a entropia de Shannon de um texto (muito usado em forense para descobrir se um dado está criptografado ou compactado).
+- **`extrair_ips`**: Vasculha um texto de log e extrai todos os endereços de IP suspeitos usando Regex.
+- **`cifra_xor`**: Aplica uma operação bit a bit (XOR) com uma chave para ofuscar ou desofuscar uma string.
