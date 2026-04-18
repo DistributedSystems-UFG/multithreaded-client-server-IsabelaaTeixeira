@@ -25,7 +25,7 @@ print(f"Preparando envio de {NUM_REQUISICOES} requisições SEQUENCIAIS (uma por
 
 start_time = time.time()
 
-# Dispara uma por vez no laço FOR tradicional (sem threads)
+# dispara uma por vez no laço FOR tradicional (sem threads)
 for i in range(NUM_REQUISICOES):
     try:
         s = socket(AF_INET, SOCK_STREAM)

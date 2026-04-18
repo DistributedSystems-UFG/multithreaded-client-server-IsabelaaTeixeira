@@ -20,7 +20,7 @@ s.listen(100)
 print("Servidor Single-Thread (1 por vez) aguardando conexões...")
 
 while True:
-    # Ele aceita a conexão e trava o laço aqui até terminar tudo
+    # ele aceita a conexão e trava o laço aqui até terminar tudo
     (conn, addr) = s.accept()
     try:
         data = conn.recv(4096)

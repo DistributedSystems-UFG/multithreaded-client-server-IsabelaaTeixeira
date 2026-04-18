@@ -13,7 +13,7 @@ def calcular_entropia(texto):
         entropia += - p_x * math.log2(p_x)
     return round(entropia, 4)
 
-# FUNÇÃO DA THREAD: Atende um cliente de forma independente
+# a thread atende um cliente de forma independente
 def handle_client(conn, addr):
     try:
         data = conn.recv(4096)
@@ -47,16 +47,14 @@ def handle_client(conn, addr):
         conn.close()
 
 s = socket(AF_INET, SOCK_STREAM) 
-# Permite reusar a porta imediatamente caso você precise reiniciar o servidor
+
 s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1) 
 s.bind((HOST, PORT))
 
-# Aumentamos a fila de espera para suportar uma enxurrada de requisições
 s.listen(100)
 
 print("Servidor Multithread aguardando conexões...")
 
-# Laço principal: Apenas aceita conexões e delega para as threads
 while True:
     (conn, addr) = s.accept()
     thread_cliente = threading.Thread(target=handle_client, args=(conn, addr))
