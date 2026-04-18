@@ -1,3 +1,5 @@
+Isabela Teixeira e Cerqueira - 202204767
+
 # Tarefa ASR 05 - Cliente e Servidor Multithread com Avaliação de Desempenho
 
 Este repositório contém a evolução da arquitetura Cliente-Servidor desenvolvida na tarefa ASR 04. Implementamos **Multithreading** e **Automação de Requisições**, realizando um estudo prático de desempenho na AWS.
